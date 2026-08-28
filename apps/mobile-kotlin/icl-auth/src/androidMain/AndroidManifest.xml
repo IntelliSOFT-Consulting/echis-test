@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      Lets isNetworkAvailable() (icl.ohs.libs.auth.platform) check connectivity before firing an
+      automatic provider-profile refresh, so it can skip calls that are certain to fail instead of
+      surfacing an error banner every time the app opens offline. Merged automatically into every
+      consuming app's manifest - no changes needed on their part.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application>
+        <!--
+          Captures the host app's Context at process start (providers initialize before any
+          Activity or Application.onCreate), so the library's default, persistent
+          AuthSessionStore can reach Android's SharedPreferences without the host app having to
+          wire a Context through itself. Merged automatically into every consuming app's manifest.
+          Never queried directly.
+        -->
+        <provider
+            android:name="icl.ohs.libs.auth.platform.AppContextInitializer"
+            android:authorities="${applicationId}.iclauth.appcontextinitializer"
+            android:exported="false" />
+    </application>
+
+</manifest>
