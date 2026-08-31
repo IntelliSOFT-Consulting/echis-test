@@ -96,3 +96,5 @@ This monorepo is designed as a one-way door that's easy to exit: each
 top-level directory under `apps/` and `infra/` is intentionally
 self-contained so it can be split into its own repository later with
 minimal history rewriting, if/when team scale demands it.
+
+(Git test- please ignore)
